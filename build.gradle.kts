@@ -1,7 +1,7 @@
 plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
-    id("java-test-fixtures")
+//    id("java-test-fixtures")
     kotlin("plugin.spring")
     kotlin("jvm")
 }
@@ -45,9 +45,19 @@ dependencies {
 
 }
 
+tasks.apply {
+    bootJar {
+        enabled = true
+    }
+    jar {
+        enabled = false
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(17)
 }
