@@ -31,7 +31,7 @@ dependencies {
 
     // DATABASE
     runtimeOnly("com.mysql:mysql-connector-j")
-    testRuntimeOnly("com.h2database:h2")
+    runtimeOnly("com.h2database:h2")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
@@ -40,9 +40,7 @@ dependencies {
 
     // Test
     testImplementation(kotlin("test"))
-
-    // h2
-
+    testRuntimeOnly("com.h2database:h2")
 }
 
 tasks.apply {
