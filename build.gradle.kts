@@ -3,6 +3,7 @@ plugins {
     id("io.spring.dependency-management")
 //    id("java-test-fixtures")
     kotlin("plugin.spring")
+    kotlin("plugin.jpa")
     kotlin("jvm")
 }
 
