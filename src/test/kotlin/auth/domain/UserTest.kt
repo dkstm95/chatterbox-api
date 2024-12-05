@@ -18,23 +18,25 @@ class UserTest : FunSpec({
         user.status shouldBe User.Status.ACTIVE
     }
 
-    test("can change nickname") {
-        val user = createUser("nickname")
-        val newNickname = "newNickname"
+    context("change nickname") {
+        test("to new nickname") {
+            val user = createUser("nickname")
+            val newNickname = "newNickname"
 
-        user.changeNickname(newNickname)
-
-        user.nickname shouldBe newNickname
-    }
-
-    test("cannot change nickname to blank") {
-        val user = createUser("nickname")
-        val newNickname = ""
-
-        shouldThrow<IllegalArgumentException> {
             user.changeNickname(newNickname)
+
+            user.nickname shouldBe newNickname
         }
-        user.nickname shouldBe "nickname"
+
+        test("to blank") {
+            val user = createUser("nickname")
+            val newNickname = ""
+
+            shouldThrow<IllegalArgumentException> {
+                user.changeNickname(newNickname)
+            }
+            user.nickname shouldBe "nickname"
+        }
     }
 
 })
