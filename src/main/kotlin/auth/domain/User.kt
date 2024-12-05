@@ -1,6 +1,9 @@
 package org.chatterbox.auth.domain
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.Id
 import org.chatterbox.common.BaseTimeEntity
 
@@ -9,16 +12,27 @@ class User private constructor(
     @Id
     val id: Long?,
 
-    var status: Status,
+    nickname: String,
+
+    status: Status,
 ) : BaseTimeEntity() {
+    @Column(nullable = false)
+    var nickname = nickname
+        protected set
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    var status = status
+        protected set
 
     enum class Status {
         ACTIVE,
     }
 
     companion object {
-        fun create() = User(
+        fun create(nickname: String) = User(
             id = null,
+            nickname = nickname,
             status = Status.ACTIVE
         )
     }

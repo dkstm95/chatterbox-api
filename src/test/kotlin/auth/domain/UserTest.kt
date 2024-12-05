@@ -7,12 +7,12 @@ import org.chatterbox.auth.domain.User
 class UserTest : FunSpec({
 
     test("create") {
-        val user = createUser()
+        val nickname = "nickname"
+        val user = User.create(nickname)
 
         user.id shouldBe null
+        user.nickname shouldBe nickname
         user.status shouldBe User.Status.ACTIVE
     }
 
 })
-
-private fun createUser() = User.create()
