@@ -16,6 +16,11 @@ class Topic private constructor(
     content: String,
 ) : BaseTimeEntity() {
 
+    fun updateContent(newContent: String) {
+        require(newContent.isNotBlank()) { "Content must not be blank" }
+        content = newContent
+    }
+
     @Column(nullable = false)
     var content: String = content
         protected set
