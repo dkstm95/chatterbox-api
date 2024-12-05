@@ -10,30 +10,27 @@ class UserTest : FunSpec({
     fun createUser(nickname: String) = User.create(nickname)
 
     test("create") {
-        val nickname = "nickname"
-        val user = createUser(nickname)
+        val user = createUser("nickname")
 
         user.id shouldBe null
-        user.nickname shouldBe nickname
+        user.nickname shouldBe "nickname"
         user.status shouldBe User.Status.ACTIVE
     }
 
     context("change nickname") {
         test("to new nickname") {
             val user = createUser("nickname")
-            val newNickname = "newNickname"
 
-            user.changeNickname(newNickname)
+            user.changeNickname("newNickname")
 
-            user.nickname shouldBe newNickname
+            user.nickname shouldBe "newNickname"
         }
 
         test("to blank") {
             val user = createUser("nickname")
-            val newNickname = ""
 
             shouldThrow<IllegalArgumentException> {
-                user.changeNickname(newNickname)
+                user.changeNickname("")
             }
             user.nickname shouldBe "nickname"
         }
