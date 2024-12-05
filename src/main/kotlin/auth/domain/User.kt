@@ -16,6 +16,12 @@ class User private constructor(
 
     status: Status,
 ) : BaseTimeEntity() {
+
+    fun changeNickname(newNickname: String) {
+        require(newNickname.isNotBlank()) { "Nickname must not be blank" }
+        nickname = newNickname
+    }
+
     @Column(nullable = false)
     var nickname = nickname
         protected set
